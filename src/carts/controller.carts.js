@@ -79,12 +79,11 @@ router.post('/:cid/products/:pid', async (req, res) => {
         res.status(200).json({ mesagge: 'Product quantity updated' });
 
     }
-
-
-
-
-
-
 });
+
+router.delete('/', async (req,res) =>{
+    await cartsMongo.deleteAll()
+    res.status(200).json({message: "Carts deleted"})
+})
 
 module.exports = router;

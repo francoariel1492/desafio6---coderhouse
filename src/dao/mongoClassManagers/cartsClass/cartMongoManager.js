@@ -43,6 +43,14 @@ class MongoCartManager {
         }
     }
 
+    async deleteAll(){
+        try{
+            await Cart.deleteMany();
+            return "Carts deleted"
+        }catch(error){
+            return error;
+        }
+    }
     // async deleteById(id){
     //     try {
     //         const jsonData = await this.getCarts();

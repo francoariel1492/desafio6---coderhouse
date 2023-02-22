@@ -48,6 +48,15 @@ class MongoProductManager{
         }
     }
 
+    async deleteAll(){
+        try{
+            await Product.deleteMany();
+            return "Products deleted"
+        }catch(error){
+            return error;
+        }
+    }
+
     async updateProduct(id,product){
         try {
             const getProductByIdMongo = await Product.findByIdAndUpdate(id,product);

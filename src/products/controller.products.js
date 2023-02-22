@@ -138,4 +138,9 @@ router.delete('/:id', async (req, res) => {
     res.status(200).json({ mesagge: getById });
 });
 
+router.delete('/', async (req,res) =>{
+    await productsMongo.deleteAll()
+    res.status(200).json({message: "Products deleted"})
+})
+
 module.exports = router;
