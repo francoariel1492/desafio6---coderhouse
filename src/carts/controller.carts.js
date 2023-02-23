@@ -9,8 +9,9 @@ const { MongoProductManager } = require('../dao/mongoClassManagers/productsClass
 const productsMongo = new MongoProductManager();
 
 
-//Url ejemplos
-//http://localhost:8080/api/carts
+
+//http://localhost:3000/api/carts
+//Obtener todos los carts
 router.get('/', async (req, res) => {
     const carts = await cartsMongo.getCarts();
 
@@ -18,8 +19,8 @@ router.get('/', async (req, res) => {
 
 });
 
-//Url ejemplo post
-//http://localhost:8080/api/carts
+//http://localhost:3000/api/carts
+//Crear cart
 router.post('/', async (req, res) => {
     try {
         const createdCart = await cartsMongo.addCart({});
@@ -32,8 +33,9 @@ router.post('/', async (req, res) => {
 
 });
 
-//Url ejemplos
-//http://localhost:8080/api/carts/1
+
+//http://localhost:3000/api/carts/1
+//Obtener cart por id
 router.get('/:id', async (req, res) => {
     const cartId = req.params.id;
     const getById = await cartsMongo.getCartById(cartId);
@@ -47,8 +49,8 @@ router.get('/:id', async (req, res) => {
 
 });
 
-//Url ejemplos
-//http://localhost:8080/api/carts/1/products/1
+//http://localhost:3000/api/carts/1/products/1
+//Añadir producto a cart
 router.post('/:cid/products/:pid', async (req, res) => {
     const cartId = req.params.cid;
     const productId = req.params.pid;
@@ -80,6 +82,9 @@ router.post('/:cid/products/:pid', async (req, res) => {
 
     }
 });
+
+//http://localhost:3000/api/carts/
+//Eliminar todos los carts
 
 router.delete('/', async (req,res) =>{
     await cartsMongo.deleteAll()

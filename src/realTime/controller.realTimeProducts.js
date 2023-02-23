@@ -8,8 +8,8 @@ const { MongoProductManager } = require('../dao/mongoClassManagers/productsClass
 const productsMongo = new MongoProductManager();
 
 //Url ejemplos
-//http://localhost:8080/realTimeProducts
-//http://localhost:8080/realTimeProducts?limit=5
+//http://localhost:3000/realTimeProducts
+//http://localhost:3000/realTimeProducts?limit=5
 router.get('/', async (req, res) => {
     const products = await productsMongo.getProducts();
     const getAll = products;

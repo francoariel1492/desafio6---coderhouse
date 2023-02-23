@@ -10,7 +10,7 @@ const productsJson = new ProductManager('./src/dao/fsClassManagers/productsClass
 
 
 //Url ejemplos
-//http://localhost:8080/api/carts
+//http://localhost:3000/api/carts
 router.get('/', async (req, res) => {
     const getAll = await cartsJson.getCarts();
     if (req.query.limit) {
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 });
 
 //Url ejemplo post
-//http://localhost:8080/api/carts
+//http://localhost:3000/api/carts
 router.post('/', async (req, res) => {
     try {
         const createdCart = await cartsJson.addCart({});
@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
 });
 
 //Url ejemplos
-//http://localhost:8080/api/carts/1
+//http://localhost:3000/api/carts/1
 router.get('/:id', async (req, res) => {
     const cartId = req.params.id;
     const getById = await cartsJson.getCartById(Number(cartId));
@@ -53,7 +53,7 @@ router.get('/:id', async (req, res) => {
 });
 
 //Url ejemplos
-//http://localhost:8080/api/carts/1/products/1
+//http://localhost:3000/api/carts/1/products/1
 router.post('/:cid/products/:pid', async (req, res) => {
     const cartId = req.params.cid;
     const productId = req.params.pid;

@@ -3,9 +3,9 @@ const { MongoProductManager } = require('../dao/mongoClassManagers/productsClass
 const productsMongo = new MongoProductManager();
 const router = Router();
 
-//Url ejemplos
-//http://localhost:8080/api/products
-//http://localhost:8080/api/products?limit=5
+//Obtener todos los productos y con limit
+//http://localhost:3000/api/products
+//http://localhost:3000/api/products?limit=5
 router.get('/', async (req, res) => {
     try {
         const products = await productsMongo.getProducts();
@@ -27,17 +27,17 @@ router.get('/', async (req, res) => {
 
 });
 
-//Url ejemplos
-//http://localhost:8080/api/products/5
-//http://localhost:8080/api/products/111
+//Obtener producto por id
+//http://localhost:3000/api/products/5
 router.get('/:id', async (req, res) => {
     const productId = req.params.id;
     const getById = await productsMongo.getProductById(productId);
     res.status(200).json({ mesagge: getById });
 });
 
-//url ejemplo
-//http://localhost:8080/api/products
+
+//Añadir producto
+//http://localhost:3000/api/products
 //body raw en postman para .post
 // {
 //     "title": "Titulo prueba", 
@@ -82,9 +82,8 @@ router.post('/', async (req, res) => {
 
 });
 
-
-//url ejemplo
-//http://localhost:8080/api/products/11
+//Actualizar producto
+//http://localhost:3000/api/products/11
 //body raw en postman para .put
 // {
 //     "title": "Titulo actualizado", 
@@ -127,9 +126,9 @@ router.put('/:id', async (req, res) => {
     
 });
 
-//Url ejemplos
-//http://localhost:8080/api/products/5
-//http://localhost:8080/api/products/111
+//Eliminar producto por id
+//http://localhost:3000/api/products/5
+//http://localhost:3000/api/products/111
 router.delete('/:id', async (req, res) => {
     const productId = req.params.id;
     const getById = await productsMongo.deleteById(productId);
@@ -138,6 +137,9 @@ router.delete('/:id', async (req, res) => {
     res.status(200).json({ mesagge: getById });
 });
 
+
+//Eliminar todos los productos
+//http://localhost:3000/api/products
 router.delete('/', async (req,res) =>{
     await productsMongo.deleteAll()
     res.status(200).json({message: "Products deleted"})

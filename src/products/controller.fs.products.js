@@ -9,8 +9,8 @@ const productsJson = new ProductManager('./src/dao/fsClassManagers/productsClass
 
 
 //Url ejemplos
-//http://localhost:8080/api/products
-//http://localhost:8080/api/products?limit=5
+//http://localhost:3000/api/products
+//http://localhost:3000/api/products?limit=5
 router.get('/', async (req, res) => {
     const getAll = await productsJson.getProducts();
     //console.log(getAll);
@@ -26,8 +26,8 @@ router.get('/', async (req, res) => {
 });
 
 //Url ejemplos
-//http://localhost:8080/api/products/5
-//http://localhost:8080/api/products/111
+//http://localhost:3000/api/products/5
+//http://localhost:3000/api/products/111
 router.get('/:id', async (req, res) => {
     const productId = req.params.id;
     const getById = await productsJson.getProductById(Number(productId));
@@ -40,8 +40,8 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-//url ejemplo
-//http://localhost:8080/api/products
+
+//http://localhost:3000/api/products
 //body raw en postman para .post
 // {
 //     "title": "Titulo prueba", 
@@ -89,7 +89,7 @@ router.post('/', async (req, res) => {
 
 
 //url ejemplo
-//http://localhost:8080/api/products/11
+//http://localhost:3000/api/products/11
 //body raw en postman para .put
 // {
 //     "title": "Titulo actualizado", 
@@ -138,8 +138,8 @@ router.put('/:id', async (req, res) => {
 });
 
 //Url ejemplos
-//http://localhost:8080/api/products/5
-//http://localhost:8080/api/products/111
+//http://localhost:3000/api/products/5
+//http://localhost:3000/api/products/111
 router.delete('/:id', async (req, res) => {
     const productId = req.params.id;
     const getById = await productsJson.deleteById(Number(productId));
